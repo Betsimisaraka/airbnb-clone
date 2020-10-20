@@ -7,10 +7,9 @@ function StaysCard({ stay }) {
             <div className="description">
                 {stay.superHost ? <p>SUPER HOST</p> : ""}
                 <p>{stay.type} {stay.beds ? `. ${stay.beds} beds` : ""}</p>
-                <p>{stay.rating}</p>
+                <p className="rate">{stay.rating}</p>
             </div>
             <h3>{stay.title}</h3>
-            <p>{stay.city}</p>
         </div>
     )
 }
