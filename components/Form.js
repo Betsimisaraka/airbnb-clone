@@ -10,8 +10,8 @@ function Form(props) {
                 <option value="Oulu">Oulu</option>
                 <option value="Vaasa">Vaasa</option>
             </select>
-            <input className="add_guest" type="number" name="guestNum" placeholder="Add guests" onChange={props.handleChange} />
-                <button onClick={props.handleChange} className="add_button">Search</button>
+            <input className="add_guest" type="number" name="guestNum" placeholder="Add guests" onChange={props.handleGuest} />
+            <button type="button" onClick={props.show} className="add_button">Search</button>
         </form>
     )
 }

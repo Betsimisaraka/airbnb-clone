@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ReactDOM from 'react-dom';
 
-
-const ToggleContent = ({ toggle, content }) => {
+export const ToggleContent = ({ toggle, content }) => {
     const [isShown, setIsShown] = useState(false);
     const hide = () => setIsShown(false);
     const show = () => setIsShown(true);
-  
     return (
       <React.Fragment>
         {toggle(show)}
@@ -14,7 +13,7 @@ const ToggleContent = ({ toggle, content }) => {
     );
   }
   
-  const Modal = ({ children }) => (
+export const Modal = ({ children }) => (
     ReactDOM.createPortal(
       <div className="modal">
         {children}
