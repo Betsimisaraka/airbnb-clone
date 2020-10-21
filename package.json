@@ -15,12 +15,12 @@
   "browserslist": [
     "last 1 chrome versions"
   ],
-  
   "bugs": {
     "url": "https://github.com/Betsimisaraka/airbnb-clone/issues"
   },
   "homepage": "https://github.com/Betsimisaraka/airbnb-clone#readme",
   "dependencies": {
+    "form": "^0.2.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
   }
