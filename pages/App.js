@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import staysData from '../stays.json';
 import StaysCard from '../components/StaysCard';
 import Form from '../components/Form';
+import LocForm from '../components/LocForm';
 import Modal from '../components/Modal';
 
 function App() {
@@ -35,8 +36,9 @@ function App() {
         <main className="main">
             <header className="header">
                 <h1 className="heading">Hello world</h1>
-                <Form handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal} />
-                <Modal closeModal={closeModal} show={show} />
+                {/* <Form handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal} /> */}
+                <LocForm openModal={openModal}/>
+                <Modal closeModal={closeModal} show={show} handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal}/>
             </header>
             <div>
                 <h2>Stays in Finland</h2>
