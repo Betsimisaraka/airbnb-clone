@@ -1,42 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
-export const ToggleContent = ({ toggle, content }) => {
-    const [isShown, setIsShown] = useState(false);
-    const hide = () => setIsShown(false);
-    const show = () => setIsShown(true);
-    return (
-      <React.Fragment>
-        {toggle(show)}
-        {isShown && content(hide)}
-      </React.Fragment>
-    );
-  }
-  
-export const Modal = ({ children }) => (
-    ReactDOM.createPortal(
-      <div className="modal">
-        {children}
-      </div>,
-      document.getElementById('modal-root')
-    )
+function Modal(props) {
+  const { show, closeModal } = props;
+
+  const modal = 
+  (<>
+    <div className={show ? 'overlay' : 'hide'} onClick={closeModal}>
+      <div className={show ? "modal" : "hide"}>
+        <button onClick={closeModal}>X</button>
+        <h1>Modal heading</h1>
+        <p>This is modal content</p>
+      </div>
+    </div> 
+  </>)
+  return ReactDOM.createPortal(
+    modal, document.getElementById('modal_root')
   );
-  
-  const App = () => (
-    <p>
-      Click to reveal a secret:
-  
-      <ToggleContent
-        toggle={show => <button onClick={show}>Open</button>}
-        content={hide => (
-          <Modal>
-            There is no spoon.<br/>
-            <button onClick={hide}>Close</button>
-          </Modal>
-        )}
-      />
-    </p>
-  );
-  
-  ReactDOM.render(<App/>, document.getElementById('app'));
-  
+}
+
+export default Modal;
+
