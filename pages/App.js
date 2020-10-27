@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import staysData from '../stays.json';
 import StaysCard from '../components/StaysCard';
-import Form from '../components/Form';
+// import Form from '../components/Form';
 import LocForm from '../components/LocForm';
 import Modal from '../components/Modal';
 
@@ -32,22 +32,28 @@ function App() {
 
     const closeModal = () => setShow(false);
     
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setShow(false);
-    } 
+    // const handleSubmit = (e) => {
+    //     console.log(e);
+    //     // e.preventDefault();
+    //     // // setCities(e.target)
+    //     // console.log(e.target);
+    //     // setShow(false)
+    // }
+    
+    // console.log(handleSubmit());
 
     return (
         <main className="main">
             <header className="header">
                 <h1 className="heading">Hello world</h1>
                 {/* <Form handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal} /> */}
-                <LocForm openModal={openModal}/>
-                <Modal closeModal={closeModal} show={show} handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal} handleSubmit={handleSubmit}/>
+                <LocForm openModal={openModal} handleSelect={handleSelect} />
+
+                <Modal closeModal={closeModal} show={show} handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal} setShow={setShow}/>
             </header>
             <div>
                 <h2>Stays in Finland</h2>
-                <p>12 + Stays</p>
+                <p>{stays ? stays.length || data.length : data.length} Stays</p>
             </div>
                 <div className="container">
                 {guest || cities 

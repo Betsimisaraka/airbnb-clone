@@ -5,10 +5,17 @@ function Form(props) {
     const [ isToggle, setIsToggle ] = useState('');
     const [ countAdult, setCountAdult ] = useState(0); 
     const [countChild, setCountChild ] = useState(0); 
-    const { handleSelect, handleGuest, handleSubmit } = props;
+    const { handleSelect, handleGuest, setShow } = props;
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(e.target.Location);
+       setShow(false)
+    }
+
     return (
         <div>
-            <form className="add_container">
+            <form className="add_container" onSubmit={handleSubmit}>
                 <fieldset className="city">
                     <label>Location</label>
                     <select name="Location" onChange={handleSelect}>
@@ -26,7 +33,7 @@ function Form(props) {
                     { isToggle && <Guest countAdult={countAdult} setCountAdult={setCountAdult} countChild={countChild} setCountChild={setCountChild}/> }
                 </fieldset>
                 <p className="container_btn">
-                    <button type="submit" onSubmit={handleSubmit} className="add_button">Search</button>
+                    <button type="submit" className="add_button">Submit</button>
                 </p>
             </form>
         </div>
