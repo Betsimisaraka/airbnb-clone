@@ -3,11 +3,11 @@ import React from 'react';
 function LocForm(props) {
     const { openModal, show } = props;
     return (
-    <p>
-        {!show && <button onClick={openModal}>Select</button>}
-        <button onClick={openModal}>Add a guest</button>
-        <button>Search</button>
-    </p>
+    <div>
+        {!show && <button type="button" onClick={openModal}>Select</button>}
+        <button type="button" >Add a guest</button>
+        <button type="button" >Search</button>
+    </div>
     )
 }
 

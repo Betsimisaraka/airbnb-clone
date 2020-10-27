@@ -31,6 +31,11 @@ function App() {
     const openModal = () => setShow(true);
 
     const closeModal = () => setShow(false);
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setShow(false);
+    } 
 
     return (
         <main className="main">
@@ -38,7 +43,7 @@ function App() {
                 <h1 className="heading">Hello world</h1>
                 {/* <Form handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal} /> */}
                 <LocForm openModal={openModal}/>
-                <Modal closeModal={closeModal} show={show} handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal}/>
+                <Modal closeModal={closeModal} show={show} handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal} handleSubmit={handleSubmit}/>
             </header>
             <div>
                 <h2>Stays in Finland</h2>

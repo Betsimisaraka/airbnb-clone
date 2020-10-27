@@ -5,14 +5,14 @@ import Form from '../components/Form';
 // import LocForm from '../components/Form';
 
 function Modal(props) {
-  const { show, closeModal, handleSelect, handleGuest } = props;
+  const { closeModal, show, handleSelect, handleGuest, handleSubmit, openModal } = props;
 
   const modal = 
   (<>
     <div className={show ? 'overlay' : 'hide'}>
       <div className={show ? "modal" : "hide"}>
         <button onClick={closeModal}>X</button>
-        <Form handleSelect={handleSelect} handleGuest={handleGuest} closeModal={closeModal}/>
+        <Form handleSelect={handleSelect} handleGuest={handleGuest} handleSubmit={handleSubmit} openModal={openModal} />
       </div>
     </div> 
   </>)
