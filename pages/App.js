@@ -1,72 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Children } from 'react';
 import staysData from '../stays.json';
-import StaysCard from '../components/StaysCard';
-// import Form from '../components/Form';
-import LocForm from '../components/LocForm';
-import Modal from '../components/Modal';
+import Header from '../components/Header';
+import StaysList from '../components/StaysList';
 
 function App() {
-    let data = staysData;
     const [stays, setStays] = useState([]);
+    console.log(stays);
     const [cities, setCities] = useState('');
-    const [guest, setGuest] = useState('');
-    const [show, setShow] = useState(false);
+    const [guest, setGuest] = useState({
+        adult: 0,
+        children: 0
+    });
 
-    const handleSelect = (e) => {
-        setCities(e.target.value);
-      const filteredCity = setStays(data.filter(stay => {
-            return stay.city.toLowerCase() === e.target.value.toLowerCase();
-        }))
-        return filteredCity;
+    useEffect(() => {
+        staysData.forEach((stay, id) => (stay.id = Date.now() + id));
+        console.log(staysData);
+        setStays(staysData);
+    }, [])
+
+    function handleCities(stay) {
+		if (!cities) {
+			return stay;
+		}
+		return stay.city == cities;
     }
 
-    const handleGuest = (e) => {
-        setGuest(e.target.value)
-      const filteredGuest = setStays(data.filter(stay => {
-            return stay.maxGuests.toString() === e.target.value.toString();
-        }))
-        return filteredGuest;
-    }
+	function handleGuest(stay) {
+		if (!guest) {
+			return stay;
+		}
+		return stay.maxGuests > guest.adult + guest.children;
+	}
 
-    const openModal = () => setShow(true);
+    // const openModal = () => setShow(true);
 
-    const closeModal = () => setShow(false);
-    
-    // const handleSubmit = (e) => {
-    //     console.log(e);
-    //     // e.preventDefault();
-    //     // // setCities(e.target)
-    //     // console.log(e.target);
-    //     // setShow(false)
-    // }
-    
-    // console.log(handleSubmit());
+    // const closeModal = () => setShow(false);
+
 
     return (
-        <main className="main">
-            <header className="header">
-                <h1 className="heading">Hello world</h1>
-                {/* <Form handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal} /> */}
-                <LocForm openModal={openModal} handleSelect={handleSelect} />
-
-                <Modal closeModal={closeModal} show={show} handleGuest={handleGuest} handleSelect={handleSelect} openModal={openModal} setShow={setShow}/>
-            </header>
-            <div>
-                <h2>Stays in Finland</h2>
-                <p>{stays ? stays.length || data.length : data.length} Stays</p>
-            </div>
-                <div className="container">
-                {guest || cities 
-                    ? stays.map((stay, i) => {
-                        let keyValue = Date.now() + i;
-                        return <StaysCard key={keyValue} stay={stay} />
-                    })
-                    : data.map((stay, i) => {
-                        let keyValue = Date.now() + i;
-                        return <StaysCard key={keyValue} stay={stay} />
-                    })}
-            </div>
-        </main>
+        <div className="main">
+            <Header 
+                cities={cities} 
+                setCities={setCities}
+                guest={guest} 
+                setGuest={setGuest} 
+            />
+            <StaysList stays={stays.filter(handleCities).filter(handleGuest)}> </StaysList>
+        </div>
     )
 }
 
