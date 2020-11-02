@@ -5,7 +5,6 @@ import StaysList from '../components/StaysList';
 
 function App() {
     const [stays, setStays] = useState([]);
-    console.log(stays);
     const [cities, setCities] = useState('');
     const [guest, setGuest] = useState({
         adult: 0,
@@ -14,7 +13,6 @@ function App() {
 
     useEffect(() => {
         staysData.forEach((stay, id) => (stay.id = Date.now() + id));
-        console.log(staysData);
         setStays(staysData);
     }, [])
 

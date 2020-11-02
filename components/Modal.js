@@ -1,9 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-// import Form from '../components/Form';
-
-// import React, { useState, useEffect } from 'react';
-// import '../styles/FilterModal.scss';
 
 function Modal({
     cities, 
@@ -135,24 +130,3 @@ function Modal({
 }
 
 export default Modal;
-
-
-// function Modal(props) {
-//   const { closeModal, show, handleSelect, handleGuest, handleSubmit, openModal, setShow } = props;
-
-//   const modal = 
-//   (<>
-//     <div className={show ? 'overlay' : 'hide'}>
-//       <div className={show ? "modal" : "hide"}>
-//         <button onClick={closeModal}>X</button>
-//         <Form handleSelect={handleSelect} handleGuest={handleGuest} handleSubmit={handleSubmit} openModal={openModal} setShow={setShow} />
-//       </div>
-//     </div> 
-//   </>)
-//   return ReactDOM.createPortal(
-//     modal, document.getElementById('modal_root')
-//   );
-// }
-
-// export default Modal;
-
